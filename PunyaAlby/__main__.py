@@ -16,7 +16,6 @@ from uvloop import install
 from config import BOT_VER, CMD_HANDLER
 from PunyaAlby import BOTLOG_CHATID, LOGGER, LOOP, aiosession, bots
 from PunyaAlby.helpers.misc import heroku
-from PunyaAlby.modules import ALL_MODULES
 
 MSG_ON = """
 **📍ALBY-PYROBOT DIAKTIFKAN**

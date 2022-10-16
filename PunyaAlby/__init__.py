@@ -19,20 +19,21 @@ from aiohttp import ClientSession
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from gpytranslate import Translator
 from pyrogram import Client
+from pyrogram.types import *
 from pytgcalls import GroupCallFactory
 
-from config import (
-    API_HASH,
-    API_ID,
-    BOTLOG_CHATID,
-    DB_URL,
-    STRING_SESSION1,
-    STRING_SESSION2,
-    STRING_SESSION3,
-    STRING_SESSION4,
-    STRING_SESSION5,
-    SUDO_USERS,
-)
+from config import *
+
+LOOP = asyncio.get_event_loop_policy().get_event_loop()
+trl = Translator()
+aiosession = ClientSession()
+CMD_HELP = {}
+scheduler = AsyncIOScheduler()
+StartTime = time.time()
+START_TIME = datetime.now()
+TEMP_SETTINGS: Dict[Any, Any] = {}
+TEMP_SETTINGS["PM_COUNT"] = {}
+TEMP_SETTINGS["PM_LAST_MSG"] = {}
 
 LOG_FILE_NAME = "logs.txt"
 logging.basicConfig(
@@ -45,12 +46,11 @@ logging.basicConfig(
     ],
 )
 logging.getLogger("asyncio").setLevel(logging.CRITICAL)
-logging.getLogger("pytgcalls").setLevel(logging.WARNING)
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 logging.getLogger("pyrogram.client").setLevel(logging.WARNING)
+logging.getLogger("pyrogram.syncer").setLevel(logging.CRITICAL)
 logging.getLogger("pyrogram.session.auth").setLevel(logging.CRITICAL)
 logging.getLogger("pyrogram.session.session").setLevel(logging.CRITICAL)
-
 LOGS = logging.getLogger(__name__)
 
 
@@ -58,13 +58,13 @@ def LOGGER(name: str) -> logging.Logger:
     return logging.getLogger(name)
 
 
-if (
-    not STRING_SESSION1
-    and not STRING_SESSION2
-    and not STRING_SESSION3
-    and not STRING_SESSION4
-    and not STRING_SESSION5
-):
+API_ID = API_ID
+API_HASH = API_HASH
+SUDO_USERS = SUDO_USERS
+DB_URL = DB_URL
+
+
+if not STRING_SESSION1:
     LOGGER(__name__).error("No String Session Found! Exiting!")
     sys.exit()
 
@@ -81,31 +81,12 @@ if BOTLOG_CHATID:
 else:
     BOTLOG_CHATID = "me"
 
-LOOP = asyncio.get_event_loop()
-
-trl = Translator()
-
-aiosession = ClientSession()
-
-CMD_HELP = {}
-
-scheduler = AsyncIOScheduler()
-
-StartTime = time.time()
-
-START_TIME = datetime.now()
-
-TEMP_SETTINGS: Dict[Any, Any] = {}
-TEMP_SETTINGS["PM_COUNT"] = {}
-TEMP_SETTINGS["PM_LAST_MSG"] = {}
-
 
 bot1 = (
     Client(
-        name="bot1",
+        session_name=STRING_SESSION1,
         api_id=API_ID,
         api_hash=API_HASH,
-        session_string=STRING_SESSION1,
         plugins=dict(root="PunyaAlby/modules"),
     )
     if STRING_SESSION1
@@ -114,10 +95,9 @@ bot1 = (
 
 bot2 = (
     Client(
-        name="bot2",
+        session_name=STRING_SESSION2,
         api_id=API_ID,
         api_hash=API_HASH,
-        session_string=STRING_SESSION2,
         plugins=dict(root="PunyaAlby/modules"),
     )
     if STRING_SESSION2
@@ -126,10 +106,9 @@ bot2 = (
 
 bot3 = (
     Client(
-        name="bot3",
+        session_name=STRING_SESSION3,
         api_id=API_ID,
         api_hash=API_HASH,
-        session_string=STRING_SESSION3,
         plugins=dict(root="PunyaAlby/modules"),
     )
     if STRING_SESSION3
@@ -138,10 +117,9 @@ bot3 = (
 
 bot4 = (
     Client(
-        name="bot4",
+        session_name=STRING_SESSION4,
         api_id=API_ID,
         api_hash=API_HASH,
-        session_string=STRING_SESSION4,
         plugins=dict(root="PunyaAlby/modules"),
     )
     if STRING_SESSION4
@@ -150,10 +128,9 @@ bot4 = (
 
 bot5 = (
     Client(
-        name="bot5",
+        session_name=STRING_SESSION5,
         api_id=API_ID,
         api_hash=API_HASH,
-        session_string=STRING_SESSION5,
         plugins=dict(root="PunyaAlby/modules"),
     )
     if STRING_SESSION5

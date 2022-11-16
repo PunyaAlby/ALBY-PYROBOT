@@ -106,7 +106,6 @@ bot1 = (
         api_id=API_ID,
         api_hash=API_HASH,
         session_string=STRING_SESSION1,
-        plugins=dict(root="WhyzuProject/modules"),
     )
     if STRING_SESSION1
     else None

@@ -8,6 +8,7 @@
 # t.me/SharingUserbot & t.me/Lunatic0de
 
 from base64 import b64decode
+from distutils.util import strtobool
 from os import getenv
 
 from dotenv import load_dotenv

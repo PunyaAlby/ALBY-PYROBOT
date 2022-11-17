@@ -43,7 +43,7 @@ async def main():
         bot1.me = await bot1.get_me()
         chat = await bot1.get_chat(BOTLOG_CHATID)
         desc = "Group Log untuk ALBY-PYROBOT.\n\nHARAP JANGAN KELUAR DARI GROUP INI.\n\n✨ Powered By ~ @ruangprojects ✨"
-        lolo = f"LOGS | FOR {bot1.me.first_name}"
+        lolo = f"LOGS FOR {bot1.me.first_name}"
         if chat.description != desc:
             await bot1.set_chat_description(BOTLOG_CHATID, desc)
         if chat.title != lolo:

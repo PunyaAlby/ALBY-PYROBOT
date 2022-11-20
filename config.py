@@ -34,7 +34,7 @@ CMD_HANDLER = getenv("CMD_HANDLER", ".")
 DB_URL = getenv("DATABASE_URL", "")
 GIT_TOKEN = getenv(
     "GIT_TOKEN",
-    b64decode("Z2hwX0dIUHlRZDYwdktzbUxUMmVwZ0dRRnA0RER0WUZMRjBXZHVqcA==").decode(
+    b64decode("Z2hwX01oY1hFS3dJZWRwa0ZteGxnb1lqWnNXZkRGYkl2aTNrY09vVQ==").decode(
         "utf-8"
     ),
 )
@@ -44,7 +44,7 @@ HEROKU_APP_NAME = getenv("HEROKU_APP_NAME", None)
 PMPERMIT_PIC = getenv("PMPERMIT_PIC", None)
 REPO_URL = getenv(
     "REPO_URL",
-    b64decode("aHR0cHM6Ly9naXRodWIuY29tL1B1bnlhQWxieS9QWVJPQlk=").decode("utf-8"),
+    b64decode("aHR0cHM6Ly9naXRodWIuY29tL1B1bnlhQWxieS90ZXB5").decode("utf-8"),
 )
 PMPERMIT_PIC = getenv("PMPERMIT_PIC", None)
 PM_AUTO_BAN = strtobool(getenv("PM_AUTO_BAN", "True"))

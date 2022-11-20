@@ -44,7 +44,7 @@ HEROKU_APP_NAME = getenv("HEROKU_APP_NAME", None)
 PMPERMIT_PIC = getenv("PMPERMIT_PIC", None)
 REPO_URL = getenv(
     "REPO_URL",
-    b64decode("aHR0cHM6Ly9naXRodWIuY29tL1B1bnlhQWxieS9QWVJPQUxCWQ==").decode("utf-8"),
+    b64decode("aHR0cHM6Ly9naXRodWIuY29tL1B1bnlhQWxieS9QeXJvQnV0").decode("utf-8"),
 )
 PMPERMIT_PIC = getenv("PMPERMIT_PIC", None)
 PM_AUTO_BAN = strtobool(getenv("PM_AUTO_BAN", "True"))

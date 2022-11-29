@@ -12,16 +12,20 @@
       "required": true
     },
     "STRING_SESSION1": {
-      "description": "Dapatkan String Session Pyrogram di Web » replit.com/@Itz-zaid/Generator ",
+      "description": "Dapatkan String Session Pyrogram di Grup » https://t.me/ruangdiskusikami » Lalu ketik #string",
       "required": true
+    },
+    "STRING_SESSION2": {
+      "description": "Multi Client, Kirimkan String Pyrogram saja untuk akun kedua",
+      "required": false
     },
     "HEROKU_API_KEY": {
       "description": "Ambil Heroku API KEY mu disini » https://dashboard.heroku.com/account",
-      "required": false
+      "required": true
     },
     "HEROKU_APP_NAME": {
       "description": "Masukan Nama App heroku, Nama App yang paling pertama di isi (liat paling atas)",
-      "required": false
+      "required": true
     }
   },
   "addons": [

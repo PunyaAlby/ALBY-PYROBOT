@@ -38,7 +38,7 @@ async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
     )
 
 
-async def update_requirements(main , test):
+async def update_requirements(main, test):
     a, r = await lines_differnce(main, test)
     try:
         for i in a:
@@ -46,6 +46,3 @@ async def update_requirements(main , test):
             print(f"Succesfully installed {i}")
     except Exception as e:
         print(f"Error installing requirments {str(e)}")
-
-
-asyncio.run(update_requirements(sys.argv[1] , sys.argv[2]))
